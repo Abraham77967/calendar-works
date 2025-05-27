@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>May 2025 Calendar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="calendar-controls">
+            <button id="prev-month">&laquo;</button>
+            <h2 id="month-year-display">April & May 2025</h2>
+            <button id="next-month">&raquo;</button>
+            <button id="today-button" class="today-button">Today</button>
+            <button id="toggle-view-button">Month View</button>
+            
+            <div class="header-auth">
+                <div id="login-form">
+                    <button id="google-signin-button" class="google-button">
+                        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                        Sign in
+                    </button>
+                </div>
+                <div id="user-info" style="display:none;">
+                    <span id="user-email"></span>
+                    <button id="logout-button">Sign Out</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Goals Section -->
+        <div id="main-goals-section" class="main-goals-section">
+            <h3>Main Goals</h3>
+            <div id="goals-container" class="goals-container">
+                <!-- Goals will be added here dynamically -->
+            </div>
+            <button id="edit-goals-button" class="edit-goals-button">Edit Goals</button>
+        </div>
+
+        <div class="content-area">
+            <div class="calendars-wrapper">
+                <div class="calendar-container" id="calendar-1">
+                    <div class="calendar-header">
+                        <h3 id="month-year-1">April 2025</h3>
+                    </div>
+                    <div class="calendar-grid" id="calendar-grid-1">
+                        <div class="day-header">Sun</div>
+                        <div class="day-header">Mon</div>
+                        <div class="day-header">Tue</div>
+                        <div class="day-header">Wed</div>
+                        <div class="day-header">Thu</div>
+                        <div class="day-header">Fri</div>
+                        <div class="day-header">Sat</div>
+                    </div>
+                </div>
+
+                <div class="calendar-container" id="calendar-2">
+                    <div class="calendar-header">
+                        <h3 id="month-year-2">May 2025</h3>
+                    </div>
+                    <div class="calendar-grid" id="calendar-grid-2">
+                        <div class="day-header">Sun</div>
+                        <div class="day-header">Mon</div>
+                        <div class="day-header">Tue</div>
+                        <div class="day-header">Wed</div>
+                        <div class="day-header">Thu</div>
+                        <div class="day-header">Fri</div>
+                        <div class="day-header">Sat</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="event-progress-panel">
+                <h3>Checklist Progress</h3>
+                <div id="progress-items-container">
+                    <!-- Progress items will be added here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="note-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modal-date"></h3>
+            
+            <div id="events-list-container">
+                <h4>Events</h4>
+                <div id="events-list">
+                    <!-- Events will be listed here -->
+                </div>
+            </div>
+            
+            <div id="add-event-section">
+                <h4>Add New Event</h4>
+                <label for="new-event-time">Time (optional):</label>
+                <input type="time" id="new-event-time">
+                <textarea id="new-event-text" placeholder="Enter event description..."></textarea>
+                
+                <div class="checklist-section">
+                    <h5>Tasks Checklist</h5>
+                    <ul id="new-event-checklist"></ul>
+                    <div class="add-checklist-item">
+                        <input type="text" id="new-checklist-item" placeholder="Add new task...">
+                        <button id="add-item-button">Add</button>
+                    </div>
+                </div>
+                
+                <button id="add-event-button" class="action-button">Add Event</button>
+            </div>
+            
+            <div id="edit-event-section" style="display:none;">
+                <h4>Edit Event</h4>
+                <label for="edit-event-time">Time (optional):</label>
+                <input type="time" id="edit-event-time">
+                <textarea id="edit-event-text" placeholder="Enter event description..."></textarea>
+                
+                <div class="checklist-section">
+                    <h5>Tasks Checklist</h5>
+                    <ul id="edit-event-checklist"></ul>
+                    <div class="add-checklist-item">
+                        <input type="text" id="edit-checklist-item" placeholder="Add new task...">
+                        <button id="edit-add-item-button">Add</button>
+                    </div>
+                </div>
+                
+                <div class="edit-actions">
+                    <div>
+                        <button id="save-edited-event" class="action-button">Save Changes</button>
+                        <button id="cancel-edit" class="secondary-button">Cancel</button>
+                    </div>
+                    <button id="delete-event" class="delete-button">Delete Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Goals Modal -->
+    <div id="goals-modal" class="modal">
+        <div class="modal-content goals-modal-content">
+            <span class="close-button goals-close-button">&times;</span>
+            <h3>Set Your 3 Main Goals</h3>
+            <p class="modal-instructions">Define your top 3 goals. These will be displayed prominently at the top of your calendar to keep you focused.</p>
+            
+            <div class="goal-input-container">
+                <label for="goal-1">Goal 1:</label>
+                <input type="text" id="goal-1" class="goal-input" placeholder="Enter your first main goal">
+            </div>
+            
+            <div class="goal-input-container">
+                <label for="goal-2">Goal 2:</label>
+                <input type="text" id="goal-2" class="goal-input" placeholder="Enter your second main goal">
+            </div>
+            
+            <div class="goal-input-container">
+                <label for="goal-3">Goal 3:</label>
+                <input type="text" id="goal-3" class="goal-input" placeholder="Enter your third main goal">
+            </div>
+            
+            <button id="save-goals-button" class="action-button">Save Goals</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
